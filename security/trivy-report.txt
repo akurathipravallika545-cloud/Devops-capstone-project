@@ -1,0 +1,1 @@
+trivy image nginx > security/trivy-report.txt
