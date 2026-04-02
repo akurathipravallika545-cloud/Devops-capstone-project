@@ -1,13 +1,7 @@
 {
-  "name": "devops-capstone-project",
+  "name": "devops-monitoring-app",
   "version": "1.0.0",
-  "description": "DevOps Capstone Project - Node.js App",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "author": "Pravallika",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
   }
