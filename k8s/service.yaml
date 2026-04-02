@@ -7,7 +7,6 @@ spec:
   selector:
     app: devops-app
   ports:
-<<<<<<< HEAD
    - protocol: TCP
      port: 80
       targetPort: 3000
