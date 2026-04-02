@@ -5,8 +5,8 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-  const cpu = (Math.random() * 100).toFixed(0);
-  const memory = (Math.random() * 100).toFixed(0);
+  const cpu = Math.floor(Math.random() * 100);
+  const memory = Math.floor(Math.random() * 100);
 
   res.send(`
   <html>
@@ -16,78 +16,97 @@ app.get('/', (req, res) => {
       body {
         margin: 0;
         font-family: Arial;
-        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        background: #0f172a;
         color: white;
-        text-align: center;
       }
-
       h1 {
-        margin-top: 30px;
+        text-align: center;
         color: #22c55e;
       }
-
       .container {
+        padding: 20px;
+      }
+      .cards {
         display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 50px;
+        justify-content: space-around;
+        margin-top: 30px;
       }
-
       .card {
-        background: linear-gradient(135deg, #1e293b, #334155);
-        padding: 30px;
-        border-radius: 15px;
-        width: 250px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        transition: 0.3s;
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 12px;
+        width: 25%;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
       }
-
-      .card:hover {
-        transform: scale(1.05);
+      .circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 6px solid #38bdf8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        font-size: 20px;
       }
-
-      .value {
-        font-size: 30px;
-        margin-top: 10px;
-        color: #38bdf8;
-      }
-
       .status {
         color: #22c55e;
         font-weight: bold;
       }
-
+      .pipeline {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .step {
+        background: #1e293b;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        width: 20%;
+      }
       .footer {
-        margin-top: 50px;
-        color: #cbd5f5;
+        margin-top: 40px;
+        text-align: center;
+        color: #94a3b8;
       }
     </style>
   </head>
 
   <body>
-    <h1>🚀 DevOps Capstone Monitoring Dashboard</h1>
-
     <div class="container">
-      <div class="card">
-        <h3>CPU Usage</h3>
-        <div class="value">${cpu}%</div>
+      <h1>🚀 DevOps Monitoring Dashboard</h1>
+
+      <div class="cards">
+        <div class="card">
+          <h3>CPU Usage</h3>
+          <div class="circle">${cpu}%</div>
+        </div>
+
+        <div class="card">
+          <h3>Memory Usage</h3>
+          <div class="circle">${memory}%</div>
+        </div>
+
+        <div class="card">
+          <h3>Pod Status</h3>
+          <div class="status">Running</div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Memory Usage</h3>
-        <div class="value">${memory}%</div>
+      <div class="pipeline">
+        <div class="step">✅ Code Push</div>
+        <div class="step">✅ Build</div>
+        <div class="step">✅ Docker</div>
+        <div class="step">✅ Deploy</div>
       </div>
 
-      <div class="card">
-        <h3>Pod Status</h3>
-        <div class="value status">Running</div>
+      <div class="footer">
+        <p>Host: ${os.hostname()}</p>
+        <p>Version: v2.0</p>
+        <p>CI/CD: GitHub Actions + Kubernetes + Docker</p>
       </div>
-    </div>
-
-    <div class="footer">
-      <p>Host: ${os.hostname()}</p>
-      <p>Version: v2.0.0</p>
-      <p>Deployed via GitHub Actions + Kubernetes + Docker</p>
     </div>
   </body>
   </html>
