@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: devops-service
 spec:
-  type: LoadBalancer
   selector:
     app: devops-app
   ports:
    - protocol: TCP
      port: 80
       targetPort: 3000
+      type: LoadBalancer
