@@ -293,5 +293,5 @@ kubectl rollout status deployment devops-app
 
 ---
 
-⭐ This project demonstrates **end-to-end DevOps expertise (Beginner → Advanced → Production Ready)**.
+
 
